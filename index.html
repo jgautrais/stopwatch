@@ -34,8 +34,8 @@ if (localStorage.stopButton === "true" || localStorage.localStart === "null") {
   document.getElementById("stop").disabled = true;
 }
             
-if (localStorage.stopButton === "true") {
-  let total = countTotal + countSession;
+if (localStorage.stopButton === "true" && localStorage.localTotal > 0) {
+  let total = countTotal;
 
   let s = Math.floor((total /  1000)) % 60;
   let m = Math.floor((total / 60000)) % 60;
