@@ -44,7 +44,7 @@ function callTimer(startTime) {
 
 function start() {
   startTime = new Date();
-  localStorage.localStart = startTime;
+  localStorage.localStart = +startTime;
   timer = setInterval(() => {return callTimer(startTime)}, 10);
   document.getElementById("start").disabled = true;
   document.getElementById("stop").disabled = false;
