@@ -25,7 +25,7 @@
         </center>
         <script>
 let timer;
-let startTime = localStorage.stopButton !== "true" ? localStorage.localStart !== "null" ? +localStorage.localStart : null;
+let startTime = localStorage.stopButton === "true" ? null : localStorage.localStart !== "null" ? +localStorage.localStart : null;
 let countTotal = +localStorage.localTotal > 0 ? +localStorage.localTotal : 0;
 let countSession;
 let run = 0;
