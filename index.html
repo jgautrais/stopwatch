@@ -26,7 +26,7 @@
         <script>
 let timer;
 let startTime = localStorage.localStart !== "null" ? +localStorage.localStart : null;
-let countTotal = +localTotal.localStart > 0 ? +localTotal.localStart : 0;
+let countTotal = +localStorage.localTotal > 0 ? +localStorage.localTotal : 0;
 let countSession;
 
 function callTimer(startTime) {
