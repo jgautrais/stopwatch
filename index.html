@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+        <title>Stopwatch</title>
+    </head>
+    <body>
+        <center style="font-family: 'Robot Mono', monospace;">
+        <div>
+            <h4 id="heading">DIGITAL STOPWATCH</h4>
+            <h1 id="timer" style="font-size: 2rem;">00:00:00</h1>
+            <button id="start" onclick="start();">Start</button>
+            <button id="stop" onclick="stop();">Stop</button>
+            <button id="reset" onclick="reset();">Reset</button>
+        </div>
+        <hr style="border: none;"/>
+        <div style="margin-top: 1rem;">Task<br /><input type="text" /></div>
+        </center>
+        <script>
+let timer;
+let startTime = null;
+let countTotal = 0;
+let countSession;
+
+function callTimer(startTime) {
+  let current = new Date();
+  countSession = +current - +startTime;
+  let total = (countTotal + countSession);
+  let ms = total % 1000;
+  let s = Math.floor((total /  1000)) % 60;
+  let m = Math.floor((total / 60000)) % 60;
+  let h = Math.floor((total / 600000)) % 60;
+ 
+  document.getElementById("timer").innerHTML = String(h).padStart(2, '0') + ":" + String(m).padStart(2, '0') + ":" + String(s).padStart(2, '0');
+}
+
+
+function start() {
+  startTime = new Date();
+  timer = setInterval(() => {return callTimer(startTime)}, 10);
+  document.getElementById("start").disabled = true;
+  document.getElementById("stop").disabled = false;
+}
+
+function stop() {
+  countTotal += countSession;
+  clearInterval(timer);
+  document.getElementById("start").disabled = false;
+  document.getElementById("stop").disabled = true;
+}
+
+function reset() {
+    stop();
+    startTime = null;
+    countTotal = 0;
+    document.getElementById("timer").innerHTML = "00:00:00";
+}
+            
+            
+        </script>
+    </body>
+</html>
