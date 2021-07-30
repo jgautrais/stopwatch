@@ -21,7 +21,7 @@
             <button id="reset" onclick="reset();">Reset</button>
         </div>
         <hr style="border: none;"/>
-        <div style="margin-top: 1rem;">Task<br /><input type="text" /></div>
+        <div style="margin-top: 1rem;">Task<br /><input type="text" oninput="taskName();" id="task" /></div>
         </center>
         <script>
 let timer;
@@ -41,6 +41,10 @@ if (localStorage.stopButton === "true" && localStorage.localTotal > 0) {
   let m = Math.floor((total / 60000)) % 60;
   let h = Math.floor((total / 3600000)) % 60;
   document.getElementById("timer").innerHTML = String(h).padStart(2, '0') + ":" + String(m).padStart(2, '0') + ":" + String(s).padStart(2, '0');
+}
+            
+if (localStorage.task) {
+  document.getElementById("task").value = localStorage.task;
 }
             
 if (startTime) {
@@ -90,6 +94,11 @@ function reset() {
     localStorage.localTotal = 0;
     document.getElementById("timer").innerHTML = "00:00:00";
     localStorage.stopButton = false;
+}
+            
+function taskName() {
+  let taskNameValue = document.getElementById("task").value;
+  localStorage.task = taskNameValue;
 }
             
             
