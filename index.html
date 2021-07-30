@@ -25,7 +25,7 @@
         </center>
         <script>
 let timer;
-let startTime = localStorage.localStart !== "null" ? +localStorage.localStart : null;
+let startTime = localStorage.stopButton !== "true" ? localStorage.localStart !== "null" ? +localStorage.localStart : null;
 let countTotal = +localStorage.localTotal > 0 ? +localStorage.localTotal : 0;
 let countSession;
 let run = 0;
@@ -57,6 +57,7 @@ function start() {
   timer = setInterval(() => {return callTimer(startTime)}, 10);
   document.getElementById("start").disabled = true;
   document.getElementById("stop").disabled = false;
+  localStorage.stopButton = false;
 }
 
 function stop() {
@@ -65,6 +66,7 @@ function stop() {
   clearInterval(timer);
   document.getElementById("start").disabled = false;
   document.getElementById("stop").disabled = true;
+  localStorage.stopButton = true;
 }
 
 function reset() {
@@ -74,6 +76,7 @@ function reset() {
     countTotal = 0;
     localStorage.localTotal = 0;
     document.getElementById("timer").innerHTML = "00:00:00";
+    localStorage.stopButton = false;
 }
             
             
