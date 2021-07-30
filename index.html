@@ -30,6 +30,10 @@ let countTotal = +localStorage.localTotal > 0 ? +localStorage.localTotal : 0;
 let countSession;
 let run = 0;
             
+if (localStorage.stopButton === "true") {
+  document.getElementById("stop").disabled = true;
+}
+            
 if (startTime) {
   start();
 }
