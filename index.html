@@ -39,7 +39,7 @@ if (localStorage.stopButton === "true" && localStorage.localTotal > 0) {
 
   let s = Math.floor((total /  1000)) % 60;
   let m = Math.floor((total / 60000)) % 60;
-  let h = Math.floor((total / 3600000)) % 60;
+  let h = Math.floor((total / 3600000)) % 24;
   document.getElementById("timer").innerHTML = String(h).padStart(2, '0') + ":" + String(m).padStart(2, '0') + ":" + String(s).padStart(2, '0');
 }
             
@@ -55,10 +55,10 @@ function callTimer(startTime) {
   let current = new Date();
   countSession = +current - +startTime;
   let total = (countTotal + countSession);
-  let ms = total % 1000;
+    
   let s = Math.floor((total /  1000)) % 60;
   let m = Math.floor((total / 60000)) % 60;
-  let h = Math.floor((total / 3600000)) % 60;
+  let h = Math.floor((total / 3600000)) % 24;
  
   document.getElementById("timer").innerHTML = String(h).padStart(2, '0') + ":" + String(m).padStart(2, '0') + ":" + String(s).padStart(2, '0');
 }
